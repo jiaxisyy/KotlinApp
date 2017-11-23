@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_practicedraw.*
 /**
  * Created by hekd on 2017/11/10.
  */
-class PracticeDraw : AppCompatActivity() {
+class PracticeDraw1 : AppCompatActivity() {
     val pageModels = arrayListOf<PagerModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

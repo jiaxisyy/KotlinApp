@@ -1,4 +1,4 @@
-package com.example.hekd.kotlinapp.ui.view
+package com.example.hekd.kotlinapp.ui.view1
 
 import android.content.Context
 import android.graphics.Canvas

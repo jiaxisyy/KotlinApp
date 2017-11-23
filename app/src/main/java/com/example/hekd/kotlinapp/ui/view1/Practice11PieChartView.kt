@@ -1,4 +1,4 @@
-package com.example.hekd.kotlinapp.ui.view
+package com.example.hekd.kotlinapp.ui.view1
 
 import android.content.Context
 import android.graphics.*
@@ -86,6 +86,7 @@ class Practice11PieChartView : View {
         canvas.drawLine(lineEndEndX.toFloat(), lineEndEndY.toFloat(), (lineEndEndX - 50).toFloat(), lineEndEndY.toFloat(), paint)
         //左边的字
         canvas.drawText(arrayListOfNames[arrayListOfNames.size-1], (lineEndEndX - 10 - 50 - paint.measureText(arrayListOfNames[arrayListOfNames.size-1])).toFloat(), lineEndEndY.toFloat(), paint)
+
 
     }
 

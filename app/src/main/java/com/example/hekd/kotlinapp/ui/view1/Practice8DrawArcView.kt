@@ -1,9 +1,8 @@
-package com.example.hekd.kotlinapp.ui.view
+package com.example.hekd.kotlinapp.ui.view1
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.Path
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.util.AttributeSet

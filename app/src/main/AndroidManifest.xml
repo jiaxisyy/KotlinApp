@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".GrammarActivity"></activity>
-        <activity android:name=".ui.activity.PracticeDraw"/>
+        <activity android:name=".ui.activity.PracticeDraw1"/>
+        <activity android:name=".ui.activity.PracticeDraw2"/>
     </application>
 
 </manifest>

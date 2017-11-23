@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.hekd.kotlinapp.ui.view.Practice1DrawColorView
+    <com.example.hekd.kotlinapp.ui.view1.Practice1DrawColorView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
