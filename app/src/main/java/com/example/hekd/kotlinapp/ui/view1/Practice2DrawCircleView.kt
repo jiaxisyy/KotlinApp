@@ -30,7 +30,7 @@ class Practice2DrawCircleView : View {
         //黑色空心圆
         paint.style = Paint.Style.STROKE
 
-        canvas!!.drawCircle(width * 3 / 4f, height / 4f, 150f, paint)
+        canvas.drawCircle(width * 3 / 4f, height / 4f, 150f, paint)
         //蓝色实心圆
         paint.color = Color.BLUE
         paint.style = Paint.Style.FILL

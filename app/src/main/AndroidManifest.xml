@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hekd.kotlinapp">
+    <!--百度语音识别-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:hardwareAccelerated="false"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,6 +26,18 @@
         <activity android:name=".GrammarActivity"></activity>
         <activity android:name=".ui.activity.PracticeDraw1"/>
         <activity android:name=".ui.activity.PracticeDraw2"/>
+        <!--百度语音识别前-->
+        <activity android:name=".ai.VoiceRecognitionActivity"/>
+        <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
+        <meta-data android:name="com.baidu.speech.APP_ID"
+            android:value="10480919" />
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="H10umRiqLaBGTroFaGTIFEvX" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="4aXGfVFkuHN0GfY65RPtr8zHGGhq7NVo" />
+        <!--百度语音识别后-->
     </application>
 
 </manifest>

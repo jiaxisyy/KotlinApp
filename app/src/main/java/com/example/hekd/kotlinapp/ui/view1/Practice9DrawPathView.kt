@@ -32,7 +32,7 @@ class Practice9DrawPathView : View {
         paint.color = Color.BLACK
 
         val path = Path()
-        path!!.addArc(200F, 200F, 400F, 400F, -225F, 225F)
+        path.addArc(200F, 200F, 400F, 400F, -225F, 225F)
         path.arcTo(400F, 200F, 600F, 400F, -180F, 225F, false)
         path.lineTo(400F, 542F)
         canvas!!.drawPath(path, paint)

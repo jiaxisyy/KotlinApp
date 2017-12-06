@@ -29,5 +29,6 @@
     <string name="title_mask_filter">setMaskFilter()</string>
     <string name="title_fill_path">setFillPath()</string>
     <string name="title_text_path">setTextPath()</string>
+    <string name="tv_dialog_voiceReminder">你可以开始说话了</string>
 
 </resources>
