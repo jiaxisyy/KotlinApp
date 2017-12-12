@@ -3,9 +3,6 @@ package com.example.hekd.kotlinapp.ai
 import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.speech.RecognitionListener
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -17,12 +14,59 @@ import com.baidu.speech.asr.SpeechConstant
 import com.example.hekd.kotlinapp.R
 import kotlinx.android.synthetic.main.activity_voice.*
 import org.json.JSONObject
+import kotlin.collections.HashMap
 
 
 /**
  * Created by hekd on 2017/12/5.
  */
-class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener {
+class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener, IRecogListener {
+    override fun onAsrReady() {
+    }
+
+    override fun onAsrBegin() {
+    }
+
+    override fun onAsrEnd() {
+    }
+
+    override fun onAsrPartialResult(results: Array<String>, recogResult: RecogResult) {
+    }
+
+    override fun onAsrFinalResult(results: Array<String?>?, recogResult: RecogResult) {
+        println(results!![0] + "==========onAsrFinalResult===========")
+    }
+
+    override fun onAsrFinish(recogResult: RecogResult) {
+    }
+
+    override fun onAsrFinishError(errorCode: Int, subErrorCode: Int, errorMessage: String, descMessage: String, recogResult: RecogResult) {
+    }
+
+    override fun onAsrLongFinish() {
+    }
+
+    override fun onAsrVolume(volumePercent: Int, volume: Int) {
+    }
+
+    override fun onAsrAudio(data: ByteArray, offset: Int, length: Int) {
+    }
+
+    override fun onAsrExit() {
+    }
+
+    override fun onAsrOnlineNluResult(nluResult: String) {
+
+        println(nluResult + "==========onAsrOnlineNluResult===========")
+
+    }
+
+    override fun onOfflineLoaded() {
+    }
+
+    override fun onOfflineUnLoaded() {
+    }
+
     var eventManager: EventManager? = null
     var dialogReminder: TextView? = null
 
@@ -33,21 +77,22 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
         if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_READY)) {
             // 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了
             initDialog()
-        }
-        if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH)) {
+        } else if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH)) {
             // 识别结束
             println("识别结束++++++++++++++++++++++++")
-        }
-
-
-        if (p1 != null && p1.contains("result_type")) {
-            val jsonObject = JSONObject(p1)
-            val resultType = jsonObject.get("result_type")
-            if (resultType == "final_result") {
-                println("=============最终===============" + p1)
-                dialogReminder!!.text = jsonObject.get("best_result").toString()
+            println()
+        } else if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
+            val recogResult = RecogResult.parseJson(p1!!)
+            // 临时识别结果, 长语音模式需要从此消息中取出结果
+            val results = recogResult.getResultsRecognition()
+            if (recogResult.isFinalResult()) {
+                this.onAsrFinalResult(results, recogResult)
+            } else if (recogResult.isNluResult()) {
+                this.onAsrOnlineNluResult(String(p2!!, p3, p4))
             }
+            println("=============最终===============" + p1)
         }
+
         // ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节
 
     }
@@ -57,21 +102,18 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
             btn_voiceStart.id -> {
                 // asr params(反馈请带上此行日志):{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}
                 // 其中{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}为ASR_START 事件的参数
-                val json = "{\"accept-audio-data\":false,\"disable-punctuation\":false,\"accept-audio-volume\":true,\"pid\":1536}"
+
+                val params = HashMap<String, Any>()
+                params.put("accept-audio-data", false)
+                params.put("accept-audio-volume", false)
+                params.put("_nlu_online", true)
+                val map = PidBuilder.create().model(PidBuilder.SEARCH).addPidInfo(params)
+                val json = JSONObject(map).toString()
                 eventManager!!.send(SpeechConstant.ASR_START, json, null, 0, 0)
+
             }
         }
     }
-
-
-    val handler = object : Handler() {
-        override fun handleMessage(msg: Message?) {
-            super.handleMessage(msg)
-            println("============================")
-        }
-
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
