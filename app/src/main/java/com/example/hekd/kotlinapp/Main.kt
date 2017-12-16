@@ -18,13 +18,11 @@ fun main(args: Array<out String>) {
     printSum5()
 }
 
+
 data class Students(val id: Int, val name: String)
 
 
-fun sum(a: Int, b: Int): Int {
-
-    return a + b
-}
+fun sum(a: Int, b: Int): Int = a + b
 
 
 fun sum2(a: Int, b: Int) = a + b

@@ -23,8 +23,6 @@ class GrammarActivity : AppCompatActivity() {
     private fun test_when() {
         val btn_when = findViewById(R.id.btn_when) as Button
         btn_when.setOnClickListener {
-
-
             when (x) {
                 2 -> println(2)
                 3 -> println(3)

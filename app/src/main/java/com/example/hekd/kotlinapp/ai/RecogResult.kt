@@ -39,6 +39,8 @@ class RecogResult {
                             recogs[i] = arr.getString(i)
                         }
                         result.setResultsRecognition(recogs)
+
+
                     }
 
 

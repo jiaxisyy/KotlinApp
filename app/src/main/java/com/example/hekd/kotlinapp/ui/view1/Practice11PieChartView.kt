@@ -85,7 +85,7 @@ class Practice11PieChartView : View {
         canvas.drawLine(lineEndStartX.toFloat(), lineEndStartY.toFloat(), lineEndEndX.toFloat(), lineEndEndY.toFloat(), paint)
         canvas.drawLine(lineEndEndX.toFloat(), lineEndEndY.toFloat(), (lineEndEndX - 50).toFloat(), lineEndEndY.toFloat(), paint)
         //左边的字
-        canvas.drawText(arrayListOfNames[arrayListOfNames.size-1], (lineEndEndX - 10 - 50 - paint.measureText(arrayListOfNames[arrayListOfNames.size-1])).toFloat(), lineEndEndY.toFloat(), paint)
+        canvas.drawText(arrayListOfNames[arrayListOfNames.size - 1], (lineEndEndX - 10 - 50 - paint.measureText(arrayListOfNames[arrayListOfNames.size - 1])).toFloat(), lineEndEndY.toFloat(), paint)
 
 
     }

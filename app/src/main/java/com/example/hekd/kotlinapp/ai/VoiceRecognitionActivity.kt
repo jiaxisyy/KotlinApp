@@ -14,7 +14,6 @@ import com.baidu.speech.asr.SpeechConstant
 import com.example.hekd.kotlinapp.R
 import kotlinx.android.synthetic.main.activity_voice.*
 import org.json.JSONObject
-import kotlin.collections.HashMap
 
 
 /**
@@ -55,9 +54,11 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
     override fun onAsrExit() {
     }
 
+
     override fun onAsrOnlineNluResult(nluResult: String) {
 
         println(nluResult + "==========onAsrOnlineNluResult===========")
+        DissectionNlu.dissection(nluResult)
 
     }
 
@@ -73,27 +74,31 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
 
     override fun onEvent(name: String?, p1: String?, p2: ByteArray?, p3: Int, p4: Int) {
 
-
-        if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_READY)) {
-            // 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了
-            initDialog()
-        } else if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH)) {
-            // 识别结束
-            println("识别结束++++++++++++++++++++++++")
-            println()
-        } else if (name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL)) {
-            val recogResult = RecogResult.parseJson(p1!!)
-            // 临时识别结果, 长语音模式需要从此消息中取出结果
-            val results = recogResult.getResultsRecognition()
-            if (recogResult.isFinalResult()) {
-                this.onAsrFinalResult(results, recogResult)
-            } else if (recogResult.isNluResult()) {
-                this.onAsrOnlineNluResult(String(p2!!, p3, p4))
+        when {
+            name.equals(SpeechConstant.CALLBACK_EVENT_ASR_READY) -> // 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了
+                initDialog()
+            name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH) -> {
+                // 识别结束
+                println("识别结束++++++++++++++++++++++++")
             }
-            println("=============最终===============" + p1)
+            name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL) -> {
+                val recogResult = RecogResult.parseJson(p1!!)
+                // 临时识别结果, 长语音模式需要从此消息中取出结果
+                val results = recogResult.getResultsRecognition()
+                if (recogResult.isFinalResult()) {
+                    this.onAsrFinalResult(results, recogResult)
+                } else if (recogResult.isNluResult()) {
+                    this.onAsrOnlineNluResult(String(p2!!, p3, p4))
+                }
+                println("=============最终===============" + p1)
+            }
+
+        // ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节
         }
 
         // ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节
+
+
 
     }
 
