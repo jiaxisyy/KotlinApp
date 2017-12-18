@@ -5,5 +5,13 @@ package com.example.hekd.kotlinapp.ai;
  */
 
 public class D {
+    /**
+     *
+     *
+     * @param s
+     */
+    public void test(String s){
+
+    }
 
 }
