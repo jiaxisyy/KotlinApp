@@ -5,12 +5,13 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.baidu.speech.EventListener
 import com.baidu.speech.EventManager
 import com.baidu.speech.EventManagerFactory
 import com.baidu.speech.asr.SpeechConstant
+import com.bumptech.glide.Glide
 import com.example.hekd.kotlinapp.R
 import kotlinx.android.synthetic.main.activity_voice.*
 import org.json.JSONObject
@@ -34,6 +35,7 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
 
     override fun onAsrFinalResult(results: Array<String?>?, recogResult: RecogResult) {
         println(results!![0] + "==========onAsrFinalResult===========")
+        tv_voiceRawText.text="识别结果:\n"+results!![0]
     }
 
     override fun onAsrFinish(recogResult: RecogResult) {
@@ -56,10 +58,10 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
 
 
     override fun onAsrOnlineNluResult(nluResult: String) {
-
-        println(nluResult + "==========onAsrOnlineNluResult===========")
-        DissectionNlu.dissection(nluResult)
-
+        println("==========onAsrOnlineNluResult->$nluResult===========")
+        val reminderMsg = DissectionNlu.dissection(nluResult)
+        println("==========onAsrOnlineNluResult->reminderMsg->$reminderMsg===========")
+        tv_voiceMsg.text = "解析信息:\n"+reminderMsg.toString()
     }
 
     override fun onOfflineLoaded() {
@@ -69,17 +71,19 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
     }
 
     var eventManager: EventManager? = null
-    var dialogReminder: TextView? = null
 
 
     override fun onEvent(name: String?, p1: String?, p2: ByteArray?, p3: Int, p4: Int) {
 
         when {
             name.equals(SpeechConstant.CALLBACK_EVENT_ASR_READY) -> // 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了
-                initDialog()
+            {
+                ImageUtil.setGif(imageView!!, this,R.drawable.dialog)
+            }
             name.equals(SpeechConstant.CALLBACK_EVENT_ASR_FINISH) -> {
                 // 识别结束
                 println("识别结束++++++++++++++++++++++++")
+                dialog!!.dismiss()
             }
             name.equals(SpeechConstant.CALLBACK_EVENT_ASR_PARTIAL) -> {
                 val recogResult = RecogResult.parseJson(p1!!)
@@ -99,7 +103,6 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
         // ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节
 
 
-
     }
 
     override fun onClick(v: View?) {
@@ -107,7 +110,9 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
             btn_voiceStart.id -> {
                 // asr params(反馈请带上此行日志):{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}
                 // 其中{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}为ASR_START 事件的参数
-
+                if (!dialog!!.isShowing) {
+                    dialog!!.show()
+                }
                 val params = HashMap<String, Any>()
                 params.put("accept-audio-data", false)
                 params.put("accept-audio-volume", false)
@@ -115,6 +120,7 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
                 val map = PidBuilder.create().model(PidBuilder.SEARCH).addPidInfo(params)
                 val json = JSONObject(map).toString()
                 eventManager!!.send(SpeechConstant.ASR_START, json, null, 0, 0)
+
 
             }
         }
@@ -125,6 +131,7 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
         setContentView(R.layout.activity_voice)
         initListener()
         initBaiDuSDK()
+        initDialog()
     }
 
     /**
@@ -144,20 +151,25 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
         btn_voiceStart.setOnClickListener(this)
     }
 
+    var dialog: Dialog? = null
+    var imageView: ImageView? = null
     /**
      * 初始化语音设置弹窗提示界面
      */
     private fun initDialog() {
         val inflate = LayoutInflater.from(this).inflate(R.layout.dialog_voice_reminder, null, false)
-        val dialog = Dialog(this, R.style.input_dialog)
+        dialog = Dialog(this, R.style.input_dialog)
         //返回键失效
         //dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
+        dialog!!.setCanceledOnTouchOutside(true)
         val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
-        dialog.setContentView(inflate, layoutParams)
-        dialogReminder = inflate.findViewById(R.id.tv_dialog_reminder) as TextView?
-        if (!dialog.isShowing) {
-            dialog.show()
+        dialog!!.setContentView(inflate, layoutParams)
+        imageView = inflate.findViewById(R.id.iv_dialog_voice)
+        dialog!!.setOnDismissListener {
+            Thread(Runnable {
+                Glide.get(this).clearDiskCache()
+            }).start()
         }
+
     }
 }

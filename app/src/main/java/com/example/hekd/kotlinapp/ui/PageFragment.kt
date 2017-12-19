@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewStub
 import com.example.hekd.kotlinapp.R
 import kotlinx.android.synthetic.main.fragment_page.view.*
 
@@ -29,7 +28,7 @@ class PageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val arguments = arguments
-        practiceLayoutRes = arguments.getInt("practiceLayoutRes")
+        practiceLayoutRes = arguments!!.getInt("practiceLayoutRes")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

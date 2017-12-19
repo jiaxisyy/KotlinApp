@@ -1,9 +1,8 @@
 package com.example.hekd.kotlinapp
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.Toast
 
@@ -21,7 +20,7 @@ class GrammarActivity : AppCompatActivity() {
     }
 
     private fun test_when() {
-        val btn_when = findViewById(R.id.btn_when) as Button
+        val btn_when = findViewById<Button>(R.id.btn_when)
         btn_when.setOnClickListener {
             when (x) {
                 2 -> println(2)
@@ -39,7 +38,7 @@ class GrammarActivity : AppCompatActivity() {
     }
 
     private fun test2(){
-        val button = findViewById(R.id.button2) as Button
+        val button = findViewById<Button>(R.id.button2)
         button.setOnClickListener{longToast("heh")}
 
     }

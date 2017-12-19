@@ -1,8 +1,8 @@
 package com.example.hekd.kotlinapp
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.example.hekd.kotlinapp.ai.VoiceRecognitionActivity
 import com.example.hekd.kotlinapp.ui.activity.PracticeDraw1
 import com.example.hekd.kotlinapp.ui.activity.PracticeDraw2
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun first() {
-        findViewById(R.id.btn_helloKotlin).setOnClickListener {
+        btn_helloKotlin.setOnClickListener {
             startActivity(Intent(this, GrammarActivity::class.java))
         }
         btn_openDraw1.setOnClickListener {

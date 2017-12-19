@@ -11,9 +11,7 @@ import java.util.*
  * @param weeks 此字段放周几，0：周一，1：周二… 可以保存多个，用逗号隔开 如： 0,3,4,5
  * @param event 事件
  */
-data class ReminderMsg(val type: Int, val period: Int, val date: String, val time: String, val weeks: ArrayList<Int>, val event: String) {
-
-
+data class ReminderMsg(val type: Int, val period: Int, val date: String, val time: String, val weeks: ArrayList<Int>?, val event: String) {
     override fun toString() =
             "ReminderMsg(type='$type', period='$period', date='$date', time='$time', weeks=$weeks, event='$event')"
 }

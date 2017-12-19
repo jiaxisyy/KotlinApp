@@ -9,6 +9,10 @@ class ReminderConstant {
         /**
          * 闹钟类型 1：起床闹钟；2：作业闹钟； 3：生日管家；4：日常提醒； 5：眼保健操；6：纪念日； 7：喝水/吃药；8：节日提醒； 9：自定义
          */
+        /**解析出错*/
+        val TYPE_ERROR = -1
+        /**解析默认*/
+        val TYPE_DEFAULT = 0
         /**起床*/
         val TYPE_GETUP = 1
         /**作业*/
@@ -37,6 +41,8 @@ class ReminderConstant {
         val PERIOD_USER_DEFINED = 5
         /**闹钟周期-周一-周日*/
         val PERIOD_WEEK = arrayListOf("周一", "周二", "周三", "周四", "周五", "周六", "周日")
+
+
 
 
     }
