@@ -1,7 +1,6 @@
 package com.example.hekd.kotlinapp.ai
 
 import com.baidu.speech.asr.SpeechConstant
-import kotlin.collections.HashMap
 
 /**
  * Created by hekd on 2017/12/11.

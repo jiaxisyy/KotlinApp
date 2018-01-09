@@ -1,14 +1,11 @@
 package com.example.hekd.kotlinapp.ui.activity
 
-import android.app.Activity
 import android.os.Bundle
-import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import com.example.hekd.kotlinapp.R
 import com.example.hekd.kotlinapp.ui.PageFragment
-
 import kotlinx.android.synthetic.main.activity_practicedraw.*
 
 /**
@@ -52,8 +49,6 @@ class PracticeDraw1 : AppCompatActivity() {
     class PagerModel {
         var practiceLayoutRes: Int = 0
         var titleRes: Int = 0
-
-
         constructor(practiceLayoutRes: Int, titleRes: Int) {
             this.practiceLayoutRes = practiceLayoutRes
             this.titleRes = titleRes

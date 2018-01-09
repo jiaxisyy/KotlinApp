@@ -170,6 +170,12 @@ class DissectionNlu {
                             val i = i2 - i1
                             weekList.clear()
                             (0..i).mapTo(weekList) { i1+ it }
+
+
+
+
+
+
                         }
                         if (weekCount == 2 && raw_text!!.contains(fromTo2)) {
                             //获取"至"在其中的角标,截取前面和后面的周期

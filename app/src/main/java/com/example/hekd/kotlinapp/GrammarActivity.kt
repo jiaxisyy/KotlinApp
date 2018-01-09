@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.Toast
+import com.example.hekd.kotlinapp.permission.PermissionUtils
 
 /**
  *
@@ -20,6 +21,7 @@ class GrammarActivity : AppCompatActivity() {
     }
 
     private fun test_when() {
+        PermissionUtils.premissionPic(this, this)
         val btn_when = findViewById<Button>(R.id.btn_when)
         btn_when.setOnClickListener {
             when (x) {
@@ -37,9 +39,9 @@ class GrammarActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun test2(){
+    private fun test2() {
         val button = findViewById<Button>(R.id.button2)
-        button.setOnClickListener{longToast("heh")}
+        button.setOnClickListener { longToast("heh") }
 
     }
 }

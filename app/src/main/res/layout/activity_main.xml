@@ -49,6 +49,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_openDraw1" />
+    <Button
+        android:id="@+id/btn_openDraw3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:text="PracticeDraw3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openDraw2" />
 
     <Button
         android:id="@+id/btn_voice"
@@ -58,7 +68,7 @@
         android:layout_marginTop="8dp"
         android:text="语音识别"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_openDraw2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_openDraw3" />
 
 
 </android.support.constraint.ConstraintLayout>

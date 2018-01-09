@@ -122,6 +122,7 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
                 eventManager!!.send(SpeechConstant.ASR_START, json, null, 0, 0)
 
 
+
             }
         }
     }
@@ -170,6 +171,5 @@ class VoiceRecognitionActivity : Activity(), View.OnClickListener, EventListener
                 Glide.get(this).clearDiskCache()
             }).start()
         }
-
     }
 }

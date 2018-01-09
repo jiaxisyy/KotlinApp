@@ -14,4 +14,7 @@ import java.util.*
 data class ReminderMsg(val type: Int, val period: Int, val date: String, val time: String, val weeks: ArrayList<Int>?, val event: String) {
     override fun toString() =
             "ReminderMsg(type='$type', period='$period', date='$date', time='$time', weeks=$weeks, event='$event')"
+
+
+
 }
