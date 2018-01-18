@@ -19,10 +19,8 @@ class PracticeDraw6 : AppCompatActivity() {
         setContentView(R.layout.activity_practicedraw)
         init()
         vp_main.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int): Fragment {
-                val fragment = PageFragment.newInstance(pageModels[position].practiceLayoutRes)
-                return fragment
-            }
+            override fun getItem(position: Int): Fragment =
+                    PageFragment.newInstance(pageModels[position].practiceLayoutRes)
 
             override fun getCount(): Int = pageModels.size
 

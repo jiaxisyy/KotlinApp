@@ -5,12 +5,15 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.*
 import com.example.hekd.kotlinapp.R
+import com.example.hekd.kotlinapp.Utils
 
 class Practice06Duration : LinearLayout {
     internal lateinit var durationSb: SeekBar
     internal lateinit var durationValueTv: TextView
     internal lateinit var animateBt: Button
     internal lateinit var imageView: ImageView
+    var translationState = 0
+    private var translationStateCount = 2
 
     internal var duration = 300
 
@@ -47,6 +50,15 @@ class Practice06Duration : LinearLayout {
         imageView = findViewById<View>(R.id.imageView) as ImageView
         animateBt.setOnClickListener {
             // TODO 在这里处理点击事件，执行动画。记得使用 `setDuration(duration)` 来设置动画的时长。
+            when (translationState) {
+                0 -> imageView.animate().translationX(Utils.dpToPixel(150f)).duration = duration.toLong()
+                1 -> imageView.animate().translationX(Utils.dpToPixel(0f)).duration = duration.toLong()
+            }
+            translationState++
+            if (translationState == translationStateCount) {
+                translationState = 0
+            }
+
         }
     }
 }

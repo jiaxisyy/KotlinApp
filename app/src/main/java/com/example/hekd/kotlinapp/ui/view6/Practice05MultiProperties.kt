@@ -8,11 +8,14 @@ import android.widget.Button
 import android.widget.ImageView
 
 import com.example.hekd.kotlinapp.R
+import com.example.hekd.kotlinapp.Utils
 
 
 class Practice05MultiProperties : ConstraintLayout {
     internal lateinit var animateBt: Button
     internal lateinit var imageView: ImageView
+    var translationState = 0
+    private var translationStateCount = 2
 
     constructor(context: Context) : super(context)
 
@@ -30,6 +33,16 @@ class Practice05MultiProperties : ConstraintLayout {
         imageView.alpha = 0f
         animateBt.setOnClickListener {
             // TODO 在这里处理点击事件，同时对多个属性做动画
+            when (translationState) {
+                0 -> imageView.animate().translationX(Utils.dpToPixel(150f)).scaleX(1f).scaleY(1f).rotation(720f).alpha(1f)
+                1 -> imageView.animate().translationX(Utils.dpToPixel(0f)).scaleX(0f).scaleY(0f).rotation(0f).alpha(0f)
+
+            }
+            translationState++
+            if (translationState == translationStateCount) {
+                translationState = 0
+            }
+
         }
     }
 }
