@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             btn_openDraw4 -> startActivity(Intent(this@MainActivity, PracticeDraw4::class.java))
             btn_openDraw5 -> startActivity(Intent(this@MainActivity, PracticeDraw5::class.java))
             btn_openDraw6 -> startActivity(Intent(this@MainActivity, PracticeDraw6::class.java))
+            btn_openDraw7 -> startActivity(Intent(this@MainActivity, PracticeDraw7::class.java))
 
             btn_voice -> startActivity(Intent(this@MainActivity, VoiceRecognitionActivity::class.java))
         }
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btn_openDraw4.setOnClickListener(this)
         btn_openDraw5.setOnClickListener(this)
         btn_openDraw6.setOnClickListener(this)
+        btn_openDraw7.setOnClickListener(this)
         btn_voice.setOnClickListener(this)
     }
 

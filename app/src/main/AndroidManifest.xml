@@ -30,6 +30,7 @@
         <activity android:name=".ui.activity.PracticeDraw4"/>
         <activity android:name=".ui.activity.PracticeDraw5"/>
         <activity android:name=".ui.activity.PracticeDraw6"/>
+        <activity android:name=".ui.activity.PracticeDraw7"/>
         <!--百度语音识别前-->
         <activity android:name=".ai.VoiceRecognitionActivity"/>
         <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
