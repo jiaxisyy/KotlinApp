@@ -100,6 +100,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_openDraw6" />
     <Button
+        android:id="@+id/btn_openLayout8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:text="PracticeLayout8"
+        android:textColor="#FF0000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openDraw7" />
+    <Button
         android:id="@+id/btn_voice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -107,7 +118,17 @@
         android:layout_marginTop="8dp"
         android:text="语音识别"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_openDraw7" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_openLayout8" />
+
+    <Button
+        android:id="@+id/btn_openRotateBookView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:text="RotateBookView"
+        app:layout_constraintStart_toEndOf="@+id/btn_openDraw1"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

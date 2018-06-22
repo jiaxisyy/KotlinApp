@@ -41,6 +41,7 @@ class Practice03OfObjectView : View {
         val innerPaddingRight = RADIUS * 1
         val innerPaddingTop = RADIUS * 1
         val innerPaddingBottom = RADIUS * 3
+
         val width = width.toFloat() - innerPaddingLeft - innerPaddingRight - RADIUS * 2
         val height = height.toFloat() - innerPaddingTop - innerPaddingBottom - RADIUS * 2
 

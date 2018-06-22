@@ -31,8 +31,6 @@ class GrammarActivity : AppCompatActivity() {
             x++
             applicationContext.longToast("hello world,x=" + x)
         }
-
-//        longToast("hello")
     }
 
     fun Context.longToast(message: String) {

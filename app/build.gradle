@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.example.hekd.kotlinapp"
         minSdkVersion 17
@@ -20,10 +20,17 @@ android {
         }
     }
     sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
         main {
             jni.srcDirs = []
             jniLibs.srcDirs = ['src/main/jniLibs']
+//            //解决3.0运行main出现ClassNotFoundException
+//            java.srcDirs = []
+//            kotlin.srcDirs = ['src/main/java', 'src/main/kotlin']
+//            resources.srcDirs = ['src/main/resources']
         }
+
+
     }
 }
 allprojects {

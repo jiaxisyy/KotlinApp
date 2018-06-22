@@ -19,11 +19,10 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GrammarActivity"></activity>
+        <activity android:name=".GrammarActivity" />
         <activity android:name=".ui.activity.PracticeDraw1"/>
         <activity android:name=".ui.activity.PracticeDraw2"/>
         <activity android:name=".ui.activity.PracticeDraw3"/>
@@ -31,6 +30,9 @@
         <activity android:name=".ui.activity.PracticeDraw5"/>
         <activity android:name=".ui.activity.PracticeDraw6"/>
         <activity android:name=".ui.activity.PracticeDraw7"/>
+        <activity android:name=".ui.activity.PracticeDraw8"/>
+        <activity android:name=".ui.activity.PracticeDraw9"/>
+
         <!--百度语音识别前-->
         <activity android:name=".ai.VoiceRecognitionActivity"/>
         <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />

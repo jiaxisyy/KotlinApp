@@ -36,6 +36,7 @@ class Practice01ArgbEvaluatorLayout : RelativeLayout {
             objectAnimator.duration = 2000
             objectAnimator.interpolator = LinearInterpolator()
             objectAnimator.start()
+
         }
     }
 }

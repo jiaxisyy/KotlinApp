@@ -40,9 +40,9 @@ class Practice05AnimatorSetLayout : RelativeLayout {
             // 要求 2： animator2 和 animator3 同时开始
             animatorSet.play(animator1).before(animator2)
             animatorSet.playTogether(animator2,animator3)
-
-
             animatorSet.start()
+
+
         }
     }
 }

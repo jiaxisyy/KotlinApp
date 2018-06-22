@@ -16,9 +16,22 @@ fun main(args: Array<out String>) {
     println(printSum4(10, 3))
     println(maxOf(5, 6))
     printSum5()
-
+    syy1()
+    syy2()
 }
 
+fun syy1() {
+    for (i in 1..100 step 20) {
+        print("$i ")
+    }
+}
+
+fun syy2() {
+    val items = listOf("apple", "banana", "kiwi")
+    for (item in items) {
+        println(item)
+    }
+}
 
 data class Students(val id: Int, val name: String)
 
@@ -54,7 +67,6 @@ fun maxOf(a: Int, b: Int) = if (a > b) a else b
 fun printSum4(a: Int, b: Int) = a - b
 
 fun printSum5() {
-
 
 
 }

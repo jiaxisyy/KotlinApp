@@ -37,6 +37,7 @@ class PageFragment : Fragment() {
         val practiceStub = view.practiceStub
         practiceStub.layoutResource = practiceLayoutRes
         practiceStub.inflate()
+
         return view
     }
 }
